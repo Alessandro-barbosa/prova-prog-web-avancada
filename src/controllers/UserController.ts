@@ -7,6 +7,7 @@ const prisma = new PrismaClient();
 class UserController {
     constructor(){
     }
+    //ListarUsuarios
     async listUser(req: Request, res: Response){
         
         try {
@@ -20,7 +21,7 @@ class UserController {
             })
         }
     }
-
+    //CriarUsuario
     async createUser(req: Request, res: Response){
         try {
             const userdata = req.body;
@@ -51,7 +52,7 @@ class UserController {
             });
           }
     }
-
+    //AtualizarUsuario
     async updateUser(req: Request, res: Response){
         try {
             const id = req.params.id;
@@ -78,7 +79,7 @@ class UserController {
             });
           }
     }
-
+    //DeletarUsuario
     async deleteUser(req: Request, res: Response){
         try {
             const id = req.params.id;

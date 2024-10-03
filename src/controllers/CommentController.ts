@@ -6,6 +6,7 @@ const prisma = new PrismaClient();
 
 class CommentController{
     constructor(){}
+    //Mostrar comentários
     async listComments(req: Request, res: Response){
         try{
             const comments = await prisma.comment.findMany();
@@ -17,9 +18,10 @@ class CommentController{
             })
         }
     }
+    //Criar comentário
     async createComment(req: Request, res: Response){        
-        const commentData = req.body;        
         try{                                        
+            const commentData = req.body;   
             const newComment = await prisma.comment.create({
                 data: commentData,
             })
@@ -36,6 +38,8 @@ class CommentController{
             })
         }    
     }
+
+    //Atualizar Comentário
     async updateComment(req: Request, res: Response){
         const commentData = req.body;
         const commentId = req.params.id;
@@ -60,6 +64,8 @@ class CommentController{
             console.log(error);
         }
     }
+
+    //Deletar Comentário
     async deleteComment(req: Request, res: Response){
         const commentID = req.params.id;
         try{

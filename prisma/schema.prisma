@@ -9,31 +9,31 @@ model User {
   password String    @default("123456")
   profile_image String?
   bio String
-  created_aT DateTime
-  updated_aT DateTime
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
   posts    Post[]
   comment Comment[]
 }
 
 model Post {
   id        Int       @id @default(autoincrement())
-  author    User      @relation(fields: [authorId], references: [id])
-  authorId  Int
-  content   String?
+  author    User      @relation(fields: [user_id], references: [id])
+  user_id  Int
+  content   String
   image_url String
-  created_aT DateTime
-  updated_aT DateTime
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
   Comment Comment[]
 }
 
 model Comment {
-  id        Int     @id @default(autoincrement())
+  id        Int     @id @default(autoincrement()) 
   content   String
   author    User    @relation(fields: [user_id], references: [id])
   user_id  Int
   post      Post    @relation(fields: [post_id], references: [id])
   post_id    Int
-  created_aT DateTime
+  created_at DateTime @default(now())
 }
 
 datasource db {

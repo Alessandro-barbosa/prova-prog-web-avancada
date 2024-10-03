@@ -8,6 +8,7 @@ const prisma = new PrismaClient();
 class PostController{
     constructor(){}
 
+    //Listar posts
     async listPosts(req: Request, res: Response){
         try{
             const posts = await prisma.post.findMany();
@@ -41,7 +42,7 @@ class PostController{
             })
         }
     }
-
+    //Atualizar Posts
     async updatePost(req: Request, res: Response){
         const postData = req.body;
         const postId = req.params.id;
@@ -67,7 +68,7 @@ class PostController{
             console.log(error);
         }
     }
-
+    //DeletarPosts
     async deletePost(req: Request, res: Response){
         const idPost = req.params.id;
         try{
